@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ShipRequest>
+  <Login>
+    <Username>demoapi</Username>
+    <Password>demo123</Password>
+  </Login>
+<!--  测试标记 -->
+  <Test>true</Test>
+  <ClientID>218</ClientID>
+  <AccountNumber>L0218A</AccountNumber>
+  <Reference>3245325</Reference>
+<!--  送货地址-->
+  <ShipTo>
+    <Name>Test Company</Name>
+    <Attention>Sven Larsson</Attention>
+    <Address1>12 Avenue du Valquiou</Address1>
+    <Address2></Address2>
+    <Address3></Address3>
+    <City>Tremblay-en-France</City>
+    <State>Tremblay-en-France</State>
+    <PostalCode>93290</PostalCode>
+    <Country>FR</Country>
+    <Phone>1-519-737-9101</Phone>
+    <Email>orders@test.com</Email>
+    <ConsigneeTaxID>12345</ConsigneeTaxID>
+  </ShipTo>
+<!--  拉闸警告-->
+<!--  <ShippingLane>-->
+<!--    <Region>Landmark CMH</Region>-->
+<!--    <OriginFacilityCode>130</OriginFacilityCode>-->
+<!--  </ShippingLane>-->
+<!--  未知-->
+  <ShipMethod>LGINTSTD</ShipMethod>
+  <!-- Conditional. Amount paid by the customer for all the items in their order. Must be passed in instances where the shipment information represents a partial shipment of products comprising a larger order-->
+<!--  总货值-->
+  <OrderTotal>187.98</OrderTotal>
+<!--  保险-->
+<!-- Conditional. Amount paid by the customer for shipping their entire order. Must be passed in instances where the shipment information represents a partial shipment of products comprising a larger order-->
+<!--  高货值-->
+  <OrderInsuranceFreightTotal>20.65</OrderInsuranceFreightTotal>
+<!-- Amount charged for shipping and any insurance for the shipment. This value does not include the amount charged for purchased items (i.e. Item Unit Value).-->
+  <ShipmentInsuranceFreight>20.65</ShipmentInsuranceFreight>
+  <ItemsCurrency>EUR</ItemsCurrency>
+  <!-- Optional boolean, and only used in cases when client requires shipments to be commercially cleared (i.e. B2B clearance) -->
+<!--  特殊服务 清关服务-->
+  <IsCommercialShipment>0</IsCommercialShipment>
+  <LabelFormat>PDF</LabelFormat>
+  <LabelEncoding>BASE64</LabelEncoding>
+  <!-- Optional, For a list of available options, contact your account rep -->
+<!--  <ShipOptions>-->
+<!--    <Option>-->
+<!--      <Name>dummy_option</Name>-->
+<!--      <Value>true</Value>-->
+<!--    </Option>-->
+<!--  </ShipOptions>-->
+  <!-- Conditional. Required if providing third party logistics for the client. Information here represents the actual vendor (retailer) name and address for the items sold in the order. -->
+<!--  第三方派送-->
+<!--  <VendorInformation>-->
+<!--    <VendorName>Test Company Legal Name</VendorName>-->
+<!--    <VendorAddress1>12 Avenue du Valquiou</VendorAddress1>-->
+<!--    <VendorAddress2></VendorAddress2>-->
+<!--    <VendorCity>Tremblay-en-France</VendorCity>-->
+<!--    <VendorState>Tremblay-en-France</VendorState>-->
+<!--    <VendorPostalCode>93290</VendorPostalCode>-->
+<!--    <VendorCountry>FR</VendorCountry>-->
+<!--    <VendorBusinessNumber>12345</VendorBusinessNumber>-->
+<!--  </VendorInformation>-->
+  <!-- Optional. Only used when creating return labels. -->
+  <ReturnInformation>
+    <!-- Optional. Used to link this return label to the original outbound shipment -->
+    <!-- Send either Reference or TrackingNumber, but not both -->
+    <OutboundShipment>
+<!--      下面二选一-->
+      <Reference>12932</Reference>
+      <TrackingNumber>LTN123212</TrackingNumber>
+    </OutboundShipment>
+    <!-- Optional -->
+    <Condition>Damaged</Condition>
+    <!-- Optional -->
+    <RMANumber>RMA12321</RMANumber>
+    <!-- Optional -->
+    <Notes>The shipment was damaged in transit.</Notes>
+    <!-- Optional. If provided, this text must match a client's pre-configured set of reasons. Otherwise it will be classified as a "General Return". -->
+    <Reason>Did Not Want</Reason>
+  </ReturnInformation>
+  <!-- Optional, specifies the ship from address information -->
+<!--  寄件人-->
+  <FulfillmentAddress>
+    <Name>Acme Warehouse</Name>
+    <Attention>Returns Dept.</Attention>
+    <Address1>12 Avenue du Valquiou</Address1>
+    <Address2></Address2>
+    <Address3></Address3>
+    <City>Tremblay-en-France</City>
+    <State>Tremblay-en-France</State>
+    <PostalCode>93290</PostalCode>
+    <Country>FR</Country>
+  </FulfillmentAddress>
+  <!-- Optional (rare). Allows overriding the default address where the shipment will be sent back to if it is returned. Contact your integration manager if you plan to use this feature. -->
+<!--  重写退件地址 不写-->
+<!--  <SendReturnToAddress>-->
+<!--    <Code>GHB78</Code>-->
+<!--    <Name>Acme Warehouse</Name>-->
+<!--    <Attention>Returns Dept.</Attention>-->
+<!--    <Address1>12 Avenue du Valquiou</Address1>-->
+<!--    <Address2></Address2>-->
+<!--    <Address3></Address3>-->
+<!--    <City>Tremblay-en-France</City>-->
+<!--    <State>Tremblay-en-France</State>-->
+<!--    <PostalCode>93290</PostalCode>-->
+<!--    <Country>FR</Country>-->
+<!--  </SendReturnToAddress>-->
+  <!-- Optional. Used to store any other additional information the client wants to pass. Up to 5 additional fields may be passed. -->
+  <AdditionalFields>
+    <Field1>Any type of data</Field1>
+    <Field2>Purchased with Credit Card</Field2>
+    <Field3>99000029327172321</Field3>
+    <Field4>123198012</Field4>
+    <Field5>Stored information</Field5>
+  </AdditionalFields>
+  <Packages>
+    <Package>
+      <!-- Optional package weight Unit of Measure. Default is LB (pounds). Supports LB, KG, G -->
+      <WeightUnit>KG</WeightUnit>
+      <Weight>4.5</Weight>
+      <DimensionsUnit>CM</DimensionsUnit>
+      <Height>12</Height>
+      <!-- Optional. Another reference for the client -->
+      <PackageReference>98233312</PackageReference>
+    </Package>
+    <Package>
+      <WeightUnit>KG</WeightUnit>
+      <Weight>5.2</Weight>
+      <DimensionsUnit>CM</DimensionsUnit>
+      <Width>4</Width>
+      <Length>6</Length>
+      <Height>13</Height>
+      <!-- Optional. Another reference for the client -->
+      <PackageReference>98233313</PackageReference>
+    </Package>
+  </Packages>
+  <Items>
+    <!-- Required for customs if the shipment will be crossing the border -->
+    <Item>
+      <Sku>7224059</Sku>
+      <Quantity>2</Quantity>
+      <UnitPrice>93.99</UnitPrice>
+      <Description>Women's Shoes</Description>
+      <HSCode>640399.30.00</HSCode>
+      <CountryOfOrigin>CN</CountryOfOrigin>
+    </Item>
+    <Item>
+      <Sku>7224060</Sku>
+      <Quantity>1</Quantity>
+      <UnitPrice>53.99</UnitPrice>
+      <Description>Men's Shoes</Description>
+      <HSCode>640399.30.00</HSCode>
+      <CountryOfOrigin>CN</CountryOfOrigin>
+    </Item>
+  </Items>
+  <!-- Required for all freight shipments -->
+<!--  未知 不传也成功 -->
+  <FreightDetails>
+    <ProNumber>LGBR020409E</ProNumber>
+    <PieceUnit>Pallet</PieceUnit>
+  </FreightDetails>
+</ShipRequest>

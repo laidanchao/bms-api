@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<soapenv:Header>
+<wsse:Security soapenv:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+<wsse:UsernameToken wsu:Id="UsernameToken-5" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+<wsse:Username>usaFR</wsse:Username>
+<wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">R!7bW@5kV#2p</wsse:Password>
+</wsse:UsernameToken>
+</wsse:Security>
+</soapenv:Header>
+   <soapenv:Body>
+      <ShipmentRequest xmlns="http://scxgxtt.phx-dc.dhl.com/euExpressRateBook/ShipmentMsgRequest">
+         <ClientDetail xmlns=""/>
+         <RequestedShipment xmlns="">
+            <ShipmentInfo>
+               <DropOffType>REGULAR_PICKUP</DropOffType>
+               <ServiceType>P</ServiceType>
+               <Billing>
+                  <ShipperAccountNumber>220273846</ShipperAccountNumber>
+                  <ShippingPaymentType>S</ShippingPaymentType>
+                  <BillingAccountNumber>220273846</BillingAccountNumber>
+               </Billing>
+               <Currency>EUR</Currency>
+               <UnitOfMeasurement>SI</UnitOfMeasurement>
+           	<CustomsInvoiceTemplate>COMMERCIAL_INVOICE_03</CustomsInvoiceTemplate>
+               <PaperlessTradeEnabled>false</PaperlessTradeEnabled>
+               <LabelType>PDF</LabelType>
+               <LabelTemplate>ECOM26_64_002</LabelTemplate>
+               <ArchiveLabelTemplate>ARCH_6x4</ArchiveLabelTemplate>
+			<LabelOptions>
+                  <RequestDHLCustomsInvoice>Y</RequestDHLCustomsInvoice>
+                  <DHLCustomsInvoiceLanguageCode>eng</DHLCustomsInvoiceLanguageCode>
+                  <DHLCustomsInvoiceType>COMMERCIAL_INVOICE</DHLCustomsInvoiceType>
+                  <RequestShipmentReceipt>N</RequestShipmentReceipt>
+                  <DetachOptions>
+                     <AllInOnePDF>N</AllInOnePDF>
+                     <SplitShipmentReceiptAndCustomsInvoice>N</SplitShipmentReceiptAndCustomsInvoice>
+                     <SplitTransportLabelAndWaybillDocument>N</SplitTransportLabelAndWaybillDocument>
+                     <SplitLabelsByPieces>N</SplitLabelsByPieces>
+                  </DetachOptions>
+               </LabelOptions>               
+            </ShipmentInfo>
+            <ShipTimestamp>${=(new Date().format("yyy-MM-dd"))}T19:05:00GMT+01:00</ShipTimestamp>
+            <PaymentInfo>DAP</PaymentInfo>
+            <InternationalDetail>
+               <Commodities>
+                  <NumberOfPieces>1</NumberOfPieces>
+                  <Description>contenu test</Description>
+                  <CustomsValue>400</CustomsValue>
+               </Commodities>
+               <Content>NON_DOCUMENTS</Content>
+		<ExportDeclaration>
+				<InvoiceDate>${=((new Date()+3).format("yyy-MM-dd"))}</InvoiceDate>
+				<InvoiceNumber>INV-00210291</InvoiceNumber>
+				<ExportReasonType>PERMANENT</ExportReasonType>
+				<ExportReason/>
+				<PlaceOfIncoterm>DAP</PlaceOfIncoterm>
+				<ShipmentPurpose>COMMERCIAL</ShipmentPurpose>
+                  <ExportLineItems>
+                     <ExportLineItem>
+                        <CommodityCode>FG57</CommodityCode>
+                        <ExportReasonType>PERMANENT</ExportReasonType>
+                        <ItemNumber>1</ItemNumber>
+                        <Quantity>20</Quantity>
+                        <QuantityUnitOfMeasurement>PCS</QuantityUnitOfMeasurement>
+                        <ItemDescription>Book</ItemDescription>
+                        <UnitPrice>20</UnitPrice>
+                        <NetWeight>18</NetWeight>
+                        <GrossWeight>21</GrossWeight>
+                        <ManufacturingCountryCode>CN</ManufacturingCountryCode>
+                     </ExportLineItem>
+                  </ExportLineItems>
+                  <InvoiceSignatureDetails>
+                     <SignatureName>Sample Signature name</SignatureName>
+                     <SignatureTitle>MR</SignatureTitle>
+                     <SignatureImage>iVBORw0KGgoAAAANSUhEUgAAAKoAAABACAYAAACKqexmAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAVqSURBVHhe7ZrdihxFFMe98d6ohBCMHwQJUcQrfQB9AO/1AeID+AA+QF7ANSarZmd252NnZ3fnKzs7G6+9lYAQlIAQgiAsiiCI5fn3pEJbc7p3q3Z6Zs76H/hR092nT9fHv0+d6u7nnPz++f5dQlYaCpWYgEIlJqBQiQkoVGICCpWYgEIlJqBQiQkoVGICCpWYgEIlJqBQiQkoVGICCpWYgEIlJqBQiQkoVGICCpWYgEIlJjAr1D83rrsnn76+MH77/Kr7e/KOWpcyjm++qfor4tfP3lD9pLQ3rC+2NbuTwLXzfpaBSaGiw3+88rL74fkLC+fxJ6+eWrAY4AcXXlT9FIEbIvSD68X6eXLjtRk/jz68rNqW8fD6xRk/y8CkUH9+/5LaqYvi4VsXTxQrjsNOO7+IXz56RfUV6+en9y7N+ECk1mzLePDCS6e+KavGnFARKbROXTRaxMoTG70QuTRRPP74impfhCYuRHbN9iR+/+Laf/wsE1NCRcdpHboMMBVrdQSx0Qvi0vJA5LeafRmhH4g2Nm0ARbnysjAj1NQOrxKtninRC4IM/fy1+3Z0ezVxpaRJjz64PONn2ZjMUasAwsD0qw2cBqJg6AM3U+wiD0L6Y+3aDLF5qSau2LQBoP5aCrJszo1QtcEuIzw/NhLOa1U9DzRxpaQNRSnIKnAuhIpHOlrHl4EI6s/HIMdEMG1VvcxFXiiulLQBaI/GVgXzQk0ZlDAa4rGQZqehRa9lLvJCccXedJ6iR2Orgnmhxg5K+AA7NhrPa1U9DzRxxdx0nlV5qF+GaaGmPGPMT/kA29lrTomyJ3GsrM6xT7NdBGFkx7ZmdxJhn6wiZoWaMt2ucg5GyqlUqNpq+yz4aTd1ukV+icdBqYTTvlbHMsII6IFfzb4ILQJqdlXi64A2acdPS9inRVQqVE0sqeQfnUA0mk2VYIrMty02FyzKA48jHyNp6QvqptlWBergb7qUhVse7QmKhrmpP+XjirMSLlpiF2D5gc0DwcXODBB23kes0OfBMr4BqFSo4dSZAt64+EFGRNU6rkrC15KoQ6y4tIFFm2KjERaPoZ+zRrRY8v2BTx61MYtBa5NGpULNryxT8YOMgY19PXkWcK1QYCniQhvyPjyxqUPRFIlordlXQX5mwQ0bjlUKp13grvxiyvta1OtJCLSo82LrUPRxx7xShxRfqeQ/Q9TGKZVzsZjygqlqMCAARCqAu7us02JzY+0NFphX6pAHuS6mULSjilkH/eT7JuVDlzLO7WKK/D+hUIkJKFRiAgqVmIBCJSagUIkJKFRiAgqVmIBCJSagUIkJKFRiAgqVmIBCJSagUIkJKFRiAgqVmIBCJSagUIkJKFRiAgqVmIBCJSagUIkJKFRiAgqVmCAT6pf1fbe2see+2uy7tdqeu7XZc3eao6y8JftuNwbu6/ZBtu92Y+jWWyN3p9UXem693Xfr2313d3voNjpDV9u55+pdMHKbuwdua3/stvbGriG0ehO3Jfua+4eu1Z+4dv8o29eSchv0jlx7X7b3DqQ8dB2x6fTHbqd/6Lq9sesOpJT/bfG53RMfUrbEb/Z/79A1d+U63SnNXbGD7TPE1xDXkes+Pb+5ey/7vzM4ct3h/awEnf797Pi2XHNaTpnWZ5LVFf4aaJu0pybtvtseuG+Fb1qDrC9AvXsgfTB2ddhIv4CNzujZfxzH+fCDPmkI2I9zUWbnio3/vyVtbEj/oMzj9/kyb5u39/XJbKTf6nJsU6hJHepP6+Ntpkj9ZCxQL4BxxDZK7yfz5a+XbU/Er7RDxqDWGUt70Z5RVtak7Vn7BfhG3Zoy/k0Zd2ighVLOb8jY+XrgWHvwnfsXzoKIWe104ooAAAAASUVORK5CYII=</SignatureImage>
+                    </InvoiceSignatureDetails>
+                  <OtherCharges>
+					<OtherCharge>						
+						<ChargeValue>12.50</ChargeValue>
+						<ChargeType>FRCST</ChargeType>
+					</OtherCharge>
+                  </OtherCharges>
+                  <PackageMarks>Package Remarks Description here</PackageMarks>
+                  <PayerGSTVAT>VAT2415271</PayerGSTVAT>
+                  <RecipientReference>REF127982</RecipientReference>
+                  <Remarks>
+                     <Remark>
+                        <RemarkDescription>RemarkDescription1</RemarkDescription>
+                     </Remark>
+                  </Remarks>
+                  <ShipmentDocument>
+                     <ShipmentDocumentReference>Hello</ShipmentDocumentReference>
+                     <DocumentTypeName>PDF</DocumentTypeName>
+                  </ShipmentDocument>
+                  <TermsOfPayment>Cash</TermsOfPayment>
+               </ExportDeclaration>               
+            </InternationalDetail>
+            <Ship>
+               <Shipper>
+                  <Contact>
+                     <PersonName>Nom expediteur</PersonName>
+                     <CompanyName>Raison Sociale Expediteur</CompanyName>
+                     <PhoneNumber>+33(0)59999999</PhoneNumber>
+                  </Contact>
+                  <Address>
+                     <StreetLines>rue1 expediteur</StreetLines>
+                     <StreetLines2>rue2 expediteur</StreetLines2>
+                     <StreetLines3>rue3 expediteur</StreetLines3>
+                     <City>NANTES</City>
+                     <PostalCode>44000</PostalCode>
+                     <CountryCode>FR</CountryCode>
+                  </Address>
+               </Shipper>
+               <Recipient>
+                  <Contact>
+                     <PersonName>Nom destinataire</PersonName>
+                     <CompanyName>RAison sociale Destinataire</CompanyName>
+                     <PhoneNumber>+34999999999</PhoneNumber>
+                  </Contact>
+                  <Address>
+                     <StreetLines>rue1 destinataire</StreetLines>
+                     <StreetLines2>rue2 destinataire</StreetLines2>
+                     <StreetLines3>rue2 destinataire</StreetLines3>
+                     <City>MOSCOW</City>
+                     <PostalCode>102000</PostalCode>
+                     <CountryCode>RU</CountryCode>
+                  </Address>
+               </Recipient>
+            </Ship>
+            <Packages>
+               <RequestedPackages number="1">
+                  <Weight>1</Weight>
+                       <Dimensions>
+                     <Length>1.0</Length>
+                     <Width>1.0</Width>
+                     <Height>1.0</Height>
+                  </Dimensions>
+                  <CustomerReferences>customer reference</CustomerReferences>
+               </RequestedPackages>
+            </Packages>
+         </RequestedShipment>
+      </ShipmentRequest>
+   </soapenv:Body>
+</soapenv:Envelope>

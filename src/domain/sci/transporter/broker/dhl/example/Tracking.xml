@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <soapenv:Header>
+    <wsse:Security soapenv:mustUnderstand="1"
+                   xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+      <wsse:UsernameToken wsu:Id="UsernameToken-1"
+                          xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+        <wsse:Username>usaFR</wsse:Username>
+        <wsse:Password
+          Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">
+          R!7bW@5kV#2p
+        </wsse:Password>
+      </wsse:UsernameToken>
+    </wsse:Security>
+  </soapenv:Header>
+  <soapenv:Body>
+    <trackShipmentRequest>
+      <trackingRequest>
+        <TrackingRequest>
+          <Request>
+            <ServiceHeader>
+              <MessageTime>2021-08-08T17:17:20Z</MessageTime>
+              <MessageReference>1232112121412341234123412234</MessageReference>
+            </ServiceHeader>
+          </Request>
+          <LanguageCode>fre</LanguageCode>
+          <AWBNumber>
+            <ArrayOfAWBNumberItem>4056827736</ArrayOfAWBNumberItem>
+          </AWBNumber>
+          <LevelOfDetails>ALL_CHECKPOINTS</LevelOfDetails>
+          <PiecesEnabled>B</PiecesEnabled>
+          <EstimatedDeliveryDateEnabled>1</EstimatedDeliveryDateEnabled>
+        </TrackingRequest>
+      </trackingRequest>
+    </trackShipmentRequest>
+  </soapenv:Body>
+</soapenv:Envelope>

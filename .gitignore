@@ -1,0 +1,29 @@
+# Compiled Output
+/dist
+
+# Dependencies
+/node_modules
+
+# Misc
+/coverage
+
+# System Files
+.DS_Store
+
+.idea
+.vscode
+
+staging.env
+production.env
+
+temp
+.scannerwork
+*/**/*.ignore.test.ts
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/

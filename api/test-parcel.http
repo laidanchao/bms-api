@@ -1,0 +1,185 @@
+### 1. 创建包裹
+GET http://gateway-uat.ftlapp.io/api/cms/parcel
+Content-Type: application/json;charset=UTF-8
+api-key: CMS
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI1NTIiLCJyb2xlcyI6IlJPTEVfQ01TX0FQUCIsInVzZXJuYW1lIjoiZXNlbmRlb19hcHAiLCJ0eXBlIjoiQ0xJRU5UIiwiZ3JvdXAiOiJFU0VOREVPIiwib3duZXIiOiJFU0VOREVPIiwibGFuZ3VhZ2UiOiJjbiIsInZlcnNpb24iOiJ2MS4xIiwidG9rZW5UeXBlIjoiQ0xJRU5UIiwiYXBwIjoiODY4MWRjMzEtYTUzZS00Y2JkLWEyMjYtMWNkZmMxNzMzYTM2IiwianRpIjoiZTkwNTFlYWIyMWFhNDk4NzljMjYyMmM4ZmEzYWFjYjgifQ.jBrB_8CXF7ZJP3DkpHnl5Cfc_wc25MuhTNZSnkyrk4eRO0CFf-NNvCarHSA9OMz4wCONGe61cCvGxJGqASYUNA
+
+
+### 2. 创建包裹
+
+#### 2.1 单包裹
+POST http://gateway-uat.ftlapp.io/api/cms/parcel
+Content-Type: application/json;charset=UTF-8
+api-key: CMS
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI1NTIiLCJyb2xlcyI6IlJPTEVfQ01TX0FQUCIsInVzZXJuYW1lIjoiZXNlbmRlb19hcHAiLCJ0eXBlIjoiQ0xJRU5UIiwiZ3JvdXAiOiJFU0VOREVPIiwib3duZXIiOiJFU0VOREVPIiwibGFuZ3VhZ2UiOiJjbiIsInZlcnNpb24iOiJ2MS4xIiwidG9rZW5UeXBlIjoiQ0xJRU5UIiwiYXBwIjoiODY4MWRjMzEtYTUzZS00Y2JkLWEyMjYtMWNkZmMxNzMzYTM2IiwianRpIjoiZTkwNTFlYWIyMWFhNDk4NzljMjYyMmM4ZmEzYWFjYjgifQ.jBrB_8CXF7ZJP3DkpHnl5Cfc_wc25MuhTNZSnkyrk4eRO0CFf-NNvCarHSA9OMz4wCONGe61cCvGxJGqASYUNA
+
+
+{
+  "receiverAddress": {
+    "firstName": "first",
+    "lastName": "last",
+    "company": "company",
+    "city": "paris",
+    "countryCode": "FR",
+    "postalCode": "75013",
+    "street1": "test street1",
+    "street2": "test street2",
+    "street3": "test street3",
+    "mobileNumber": "0650122677"
+  },
+  "senderAddress": {
+    "firstName": "first",
+    "lastName": "last",
+    "company": "company",
+    "city": "paris",
+    "countryCode": "FR",
+    "postalCode": "75013",
+    "street1": "test street1",
+    "street2": "test street2",
+    "street3": "test street3",
+    "mobileNumber": "0650122677"
+  },
+  "parcel": {
+    "reference": "ref 123456",
+    "weight": 5
+  },
+  "code": "CLSM_ESD_1",
+  "labelFormat": "A4_PDF"
+}
+
+#### 2.2 单包裹带保险
+POST http://gateway-uat.ftlapp.io/api/cms/parcel
+Content-Type: application/json;charset=UTF-8
+api-key: CMS
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI1NTIiLCJyb2xlcyI6IlJPTEVfQ01TX0FQUCIsInVzZXJuYW1lIjoiZXNlbmRlb19hcHAiLCJ0eXBlIjoiQ0xJRU5UIiwiZ3JvdXAiOiJFU0VOREVPIiwib3duZXIiOiJFU0VOREVPIiwibGFuZ3VhZ2UiOiJjbiIsInZlcnNpb24iOiJ2MS4xIiwidG9rZW5UeXBlIjoiQ0xJRU5UIiwiYXBwIjoiODY4MWRjMzEtYTUzZS00Y2JkLWEyMjYtMWNkZmMxNzMzYTM2IiwianRpIjoiZTkwNTFlYWIyMWFhNDk4NzljMjYyMmM4ZmEzYWFjYjgifQ.jBrB_8CXF7ZJP3DkpHnl5Cfc_wc25MuhTNZSnkyrk4eRO0CFf-NNvCarHSA9OMz4wCONGe61cCvGxJGqASYUNA
+
+
+{
+  "receiverAddress": {
+    "firstName": "first",
+    "lastName": "last",
+    "company": "company",
+    "city": "paris",
+    "countryCode": "FR",
+    "postalCode": "75013",
+    "street1": "test street1",
+    "street2": "test street2",
+    "street3": "test street3",
+    "mobileNumber": "0650122677"
+  },
+  "senderAddress": {
+    "firstName": "first",
+    "lastName": "last",
+    "company": "company",
+    "city": "paris",
+    "countryCode": "FR",
+    "postalCode": "75013",
+    "street1": "test street1",
+    "street2": "test street2",
+    "street3": "test street3",
+    "mobileNumber": "0650122677"
+  },
+  "parcel": {
+    "reference": "ref 123456",
+    "weight": 5,
+    "insuranceValue":10
+  },
+  "code": "CLSM_ESD_1",
+  "labelFormat": "A4_PDF"
+}
+
+#### 2.3 单包裹清关
+POST http://gateway-uat.ftlapp.io/api/cms/parcel
+Content-Type: application/json;charset=UTF-8
+api-key: CMS
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI1NTIiLCJyb2xlcyI6IlJPTEVfQ01TX0FQUCIsInVzZXJuYW1lIjoiZXNlbmRlb19hcHAiLCJ0eXBlIjoiQ0xJRU5UIiwiZ3JvdXAiOiJFU0VOREVPIiwib3duZXIiOiJFU0VOREVPIiwibGFuZ3VhZ2UiOiJjbiIsInZlcnNpb24iOiJ2MS4xIiwidG9rZW5UeXBlIjoiQ0xJRU5UIiwiYXBwIjoiODY4MWRjMzEtYTUzZS00Y2JkLWEyMjYtMWNkZmMxNzMzYTM2IiwianRpIjoiZTkwNTFlYWIyMWFhNDk4NzljMjYyMmM4ZmEzYWFjYjgifQ.jBrB_8CXF7ZJP3DkpHnl5Cfc_wc25MuhTNZSnkyrk4eRO0CFf-NNvCarHSA9OMz4wCONGe61cCvGxJGqASYUNA
+
+
+{
+  "receiverAddress": {
+    "firstName": "first",
+    "lastName": "last",
+    "company": "company",
+    "city": "paris",
+    "countryCode": "CH",
+    "postalCode": "6982",
+    "street1": "test street1",
+    "street2": "test street2",
+    "street3": "test street3",
+    "mobileNumber": "0650122677"
+  },
+  "senderAddress": {
+    "firstName": "first",
+    "lastName": "last",
+    "company": "company",
+    "city": "paris",
+    "countryCode": "FR",
+    "postalCode": "75013",
+    "street1": "test street1",
+    "street2": "test street2",
+    "street3": "test street3",
+    "mobileNumber": "0650122677"
+  },
+  "parcel": {
+    "reference": "ref 123456",
+    "weight": 5,
+    "items": [
+      {
+        "description": "test desc",
+        "quantity": 2,
+        "weight": 1,
+        "value": 1,
+        "originCountry": "CN"
+      }
+    ]
+  },
+  "code": "CLSM_ESD_4",
+  "labelFormat": "A4_PDF"
+}
+
+#### 多包裹
+POST http://localhost:3002/api/cms/parcel
+Content-Type: application/json;charset=UTF-8
+api-key: CMS
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI1NTIiLCJyb2xlcyI6IlJPTEVfQ01TX0FQUCIsInVzZXJuYW1lIjoiZXNlbmRlb19hcHAiLCJ0eXBlIjoiQ0xJRU5UIiwiZ3JvdXAiOiJFU0VOREVPIiwib3duZXIiOiJFU0VOREVPIiwibGFuZ3VhZ2UiOiJjbiIsInZlcnNpb24iOiJ2MS4xIiwidG9rZW5UeXBlIjoiQ0xJRU5UIiwiYXBwIjoiODY4MWRjMzEtYTUzZS00Y2JkLWEyMjYtMWNkZmMxNzMzYTM2IiwianRpIjoiZTkwNTFlYWIyMWFhNDk4NzljMjYyMmM4ZmEzYWFjYjgifQ.jBrB_8CXF7ZJP3DkpHnl5Cfc_wc25MuhTNZSnkyrk4eRO0CFf-NNvCarHSA9OMz4wCONGe61cCvGxJGqASYUNA
+
+{
+  "receiverAddress": {
+    "firstName": "first",
+    "lastName": "last",
+    "company": "company",
+    "city": "paris",
+    "countryCode": "FR",
+    "postalCode": "75013",
+    "street1": "test street1",
+    "street2": "test street2",
+    "street3": "test street3",
+    "mobileNumber": "0650122677"
+  },
+  "senderAddress": {
+    "firstName": "first",
+    "lastName": "last",
+    "company": "company",
+    "city": "paris",
+    "countryCode": "FR",
+    "postalCode": "75013",
+    "street1": "test street1",
+    "street2": "test street2",
+    "street3": "test street3",
+    "mobileNumber": "0650122677"
+  },
+  "parcels": [
+    {
+      "reference": "ref 123456",
+      "weight": 5
+    },
+    {
+     "reference": "reftest",
+     "weight": 6
+    }
+  ],
+  "code": "GLS_ESD_1",
+  "labelFormat": "A4_PDF"
+}
+
+###

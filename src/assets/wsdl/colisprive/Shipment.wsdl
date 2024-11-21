@@ -1,0 +1,974 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://colisprive.com/externe/1.0/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://colisprive.com/externe/1.0/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Services d'accès à Colis Privé</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://colisprive.com/externe/1.0/">
+      <s:element name="TestService">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SecurityID" nillable="true" type="tns:IdentificationObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="IdentificationObject">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CPCustoID" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AccountID" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TestServiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TestServiceResult" type="tns:ResponseObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResponseObject">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="RtnCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="RtnMessage" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AuthenticationHeader" type="tns:AuthenticationHeader" />
+      <s:complexType name="AuthenticationHeader">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="UserName" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Password" nillable="true" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="SetParcel">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SetParcelRequest" nillable="true" type="tns:SetParcelRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SetParcelRequest">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="SecurityID" nillable="true" type="tns:IdentificationObject" />
+          <s:element minOccurs="1" maxOccurs="1" name="OrderID" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CltNum" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CsgAdd" nillable="true" type="tns:DeliveryAddressObject" />
+          <s:element minOccurs="1" maxOccurs="1" name="PclShipDate" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PclWeight" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsPclWithPOD" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="LabelFormat" type="tns:EnumLabelFormat" />
+          <s:element minOccurs="0" maxOccurs="1" name="AutoPrintPDF" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ChargeAmnt" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="ValueAmnt" nillable="true" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="CntrCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DestType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DestName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SendType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SendName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DeliveryAddressObject">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="DlvrName" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DlvrAddress" nillable="true" type="tns:AddressObject" />
+          <s:element minOccurs="0" maxOccurs="1" name="DlvrEmail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DlvrPhon" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DlvrGsm" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DlvrDCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DlvrComments" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AddressObject">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Add1" nillable="true" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Add2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Add3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Add4" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ZC" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="City" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Country" nillable="true" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GPSCoord" type="tns:LocalizationObject" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LocalizationObject">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Lat" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Long" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="EnumLabelFormat">
+        <s:restriction base="s:string">
+          <s:enumeration value="PDF_DEFAUT" />
+          <s:enumeration value="PDF_ZEBRA" />
+          <s:enumeration value="ZPL_200" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="SetParcelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SetParcelResult" type="tns:SetParcelReturn" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SetParcelReturn">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="WSResp" type="tns:ResponseObject" />
+          <s:element minOccurs="0" maxOccurs="1" name="CPPclCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrderID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LabelUrl" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LabelZpl" type="s:base64Binary" />
+          <s:element minOccurs="1" maxOccurs="1" name="LabelType" type="tns:EnumLabelType" />
+          <s:element minOccurs="0" maxOccurs="1" name="RegOffCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RoundCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CarrCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CABCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TNTAcnt" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TNTCab" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TNTDept" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TNTPrd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TNTVer" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TNTComment1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TNTComment2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TNTComment3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TNTComment4" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CLPAcnt" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CLPFlwCab" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CLPFlwCabPrt" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CLPPCHCab" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CLPPCHCabPrt" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CLPSort" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CLPPFCSite" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RefCab" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DestRefExt" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DestRef" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DestAddr" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DestZip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DestCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MRCAB" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MRAgency" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MRRoundCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MRRefPudo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MRPreTri" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MRLibPfd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MRNoGroup" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MRNumExpe" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="EnumLabelType">
+        <s:restriction base="s:string">
+          <s:enumeration value="CP" />
+          <s:enumeration value="TT" />
+          <s:enumeration value="CE" />
+          <s:enumeration value="CS" />
+          <s:enumeration value="IP" />
+          <s:enumeration value="RL" />
+          <s:enumeration value="MR" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="SetContainer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SetContainerRequest" nillable="true" type="tns:SetContainerRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SetContainerRequest">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="SecurityID" nillable="true" type="tns:IdentificationObject" />
+          <s:element minOccurs="1" maxOccurs="1" name="LabelFormat" type="tns:EnumLabelFormat" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SetContainerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SetContainerResult" type="tns:SetContainerReturn" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SetContainerReturn">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="WSResp" type="tns:ResponseObject" />
+          <s:element minOccurs="0" maxOccurs="1" name="CntrCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrderID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LabelUrl" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CABCode" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SetShipment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SetShipmentRequest" nillable="true" type="tns:SetShipmentRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SetShipmentRequest">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="SecurityID" nillable="true" type="tns:IdentificationObject" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SetShipmentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SetShipmentResult" type="tns:SetShipmentReturn" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SetShipmentReturn">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="WSResp" type="tns:ResponseObject" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShipCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PclList" type="tns:LightParcelObject" />
+          <s:element minOccurs="0" maxOccurs="1" name="MnftUrl" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LightParcelObject">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CPPclCode" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="OrderID" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DlvrName" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PclAdd" nillable="true" type="tns:AddressObject" />
+          <s:element minOccurs="1" maxOccurs="1" name="PclShipDate" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PclWeight" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ChargeAmnt" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="CPPrdCode" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CancelParcel">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CancelParcelRequest" nillable="true" type="tns:CancelParcelRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CancelParcelRequest">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="SecurityID" nillable="true" type="tns:IdentificationObject" />
+          <s:element minOccurs="1" maxOccurs="1" name="CPPclCode" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CsgZipCode" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CancelParcelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CancelParcelResult" type="tns:CancelParcelReturn" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CancelParcelReturn">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="WSResp" type="tns:ResponseObject" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetParcel">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetParcelRequest" nillable="true" type="tns:GetParcelRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetParcelRequest">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="SecurityID" nillable="true" type="tns:IdentificationObject" />
+          <s:element minOccurs="1" maxOccurs="1" name="CPPclCode" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CsgZipCode" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetParcelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetParcelResult" type="tns:GetParcelReturn" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetParcelReturn">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="WSResp" type="tns:ResponseObject" />
+          <s:element minOccurs="0" maxOccurs="1" name="CPPclCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CsgAdd" type="tns:DeliveryAddressObject" />
+          <s:element minOccurs="0" maxOccurs="1" name="ThirdPartyAdd" type="tns:DeliveryAddressObject" />
+          <s:element minOccurs="0" maxOccurs="1" name="DlvrPlnDate" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ChargeAmnt" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="ValueAmnt" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustoName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CurrentStatusDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CurrentStatusCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CurrentStatusDesc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CPPrdCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CPPrdName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PckPoint" type="tns:PickupPointObject" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDlvrScheduleOk" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="DlvrScheduleKoMsg" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsPclWithPOD" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDlvr3PartyOk" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDlvrPckOk" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsClaimOk" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClaimKoMsg" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShipModeCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PclStatusHisto" type="tns:StatusObject" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustoCarePhoneNum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustoCareMention" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CitiesDlvr" type="tns:CityObject" />
+          <s:element minOccurs="1" maxOccurs="1" name="CmpyCode" type="tns:EnumCompanyCode" />
+          <s:element minOccurs="0" maxOccurs="1" name="CmpyPclCode" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PickupPointObject">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PckCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PckName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PckAdd" type="tns:AddressObject" />
+          <s:element minOccurs="0" maxOccurs="1" name="PckPict" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PckLocHints" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PckMonHrs" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PckTueHrs" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PckWedHrs" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PckThuHrs" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PckFriHrs" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PckSatHrs" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PckSunHrs" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="StatusObject">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="StsDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StsCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StsDesc" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CityObject">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ZC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CityName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="EnumCompanyCode">
+        <s:restriction base="s:string">
+          <s:enumeration value="C" />
+          <s:enumeration value="P" />
+          <s:enumeration value="T" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetDeliveryCalendar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetDeliveryCalendarRequest" nillable="true" type="tns:GetDeliveryCalendarRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetDeliveryCalendarRequest">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="SecurityID" nillable="true" type="tns:IdentificationObject" />
+          <s:element minOccurs="1" maxOccurs="1" name="CPPclCode" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DlvrZC" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetDeliveryCalendarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDeliveryCalendarResult" type="tns:GetDeliveryCalendarReturn" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetDeliveryCalendarReturn">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="WSResp" type="tns:ResponseObject" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DlvrCalendar" type="tns:DeliveryDateObject" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DeliveryDateObject">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="DlvrDate" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DlvrTimeF" type="tns:EnumDeliveryTimeFrame" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="EnumDeliveryTimeFrame">
+        <s:restriction base="s:string">
+          <s:enumeration value="AM" />
+          <s:enumeration value="PM" />
+          <s:enumeration value="DY" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="Set2ndDelivery">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Set2ndDeliveryRequest" nillable="true" type="tns:Set2ndDeliveryRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Set2ndDeliveryRequest">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="SecurityID" nillable="true" type="tns:IdentificationObject" />
+          <s:element minOccurs="1" maxOccurs="1" name="CPPclCode" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CsgZC" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DlvrModeType" type="tns:EnumDeliveryModeType" />
+          <s:element minOccurs="1" maxOccurs="1" name="DlvrAdd" nillable="true" type="tns:DeliveryAddressObject" />
+          <s:element minOccurs="1" maxOccurs="1" name="DlvrDate" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="EnumDeliveryModeType">
+        <s:restriction base="s:string">
+          <s:enumeration value="domicile" />
+          <s:enumeration value="tiers" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="Set2ndDeliveryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Set2ndDeliveryResult" type="tns:Set2ndDeliveryReturn" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Set2ndDeliveryReturn">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="WSResp" type="tns:ResponseObject" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SetPickupPointDelivery">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SetPickupPointDeliveryRequest" nillable="true" type="tns:SetPickupPointDeliveryRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SetPickupPointDeliveryRequest">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="SecurityID" nillable="true" type="tns:IdentificationObject" />
+          <s:element minOccurs="1" maxOccurs="1" name="CPPclCode" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CsgZC" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PckCode" nillable="true" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CsgEmail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CsgPhoneNum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CsgGsmNum" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SetPickupPointDeliveryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SetPickupPointDeliveryResult" type="tns:SetPickupPointDeliveryReturn" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SetPickupPointDeliveryReturn">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="WSResp" type="tns:ResponseObject" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetPickupPoint">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetPickupPointRequest" nillable="true" type="tns:GetPickupPointRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetPickupPointRequest">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="SecurityID" nillable="true" type="tns:IdentificationObject" />
+          <s:element minOccurs="1" maxOccurs="1" name="PckCode" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetPickupPointResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPickupPointResult" type="tns:GetPickupPointReturn" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetPickupPointReturn">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="WSResp" type="tns:ResponseObject" />
+          <s:element minOccurs="0" maxOccurs="1" name="PckPoint" type="tns:PickupPointObject" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetPickupPointsList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetPickupPointsListRequest" nillable="true" type="tns:GetPickupPointsListRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetPickupPointsListRequest">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="SecurityID" nillable="true" type="tns:IdentificationObject" />
+          <s:element minOccurs="1" maxOccurs="1" name="CPPclCode" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CsgZC" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetPickupPointsListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPickupPointsListResult" type="tns:GetPickupPointsListReturn" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetPickupPointsListReturn">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="WSResp" type="tns:ResponseObject" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PcksList" type="tns:PickupPointDeliveryObject" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PickupPointDeliveryObject">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PckPoint" type="tns:PickupPointObject" />
+          <s:element minOccurs="0" maxOccurs="1" name="PlannedDlvrDate" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpdateParcelStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateParcelStatusRequest" nillable="true" type="tns:UpdateParcelStatusRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UpdateParcelStatusRequest">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="SecurityID" nillable="true" type="tns:IdentificationObject" />
+          <s:element minOccurs="1" maxOccurs="1" name="CPPclCode" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CsgZipCode" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DestType" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DestName" nillable="true" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ParcelSize" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NewStatus" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="OldStatus" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="StatusChangeTime" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CourierIdCode" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpdateParcelStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateParcelStatusResult" type="tns:UpdateParcelStatusReturn" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UpdateParcelStatusReturn">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="WSResp" type="tns:ResponseObject" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="TestServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:TestService" />
+  </wsdl:message>
+  <wsdl:message name="TestServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:TestServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="TestServiceAuthenticationHeader">
+    <wsdl:part name="AuthenticationHeader" element="tns:AuthenticationHeader" />
+  </wsdl:message>
+  <wsdl:message name="SetParcelSoapIn">
+    <wsdl:part name="parameters" element="tns:SetParcel" />
+  </wsdl:message>
+  <wsdl:message name="SetParcelSoapOut">
+    <wsdl:part name="parameters" element="tns:SetParcelResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetParcelAuthenticationHeader">
+    <wsdl:part name="AuthenticationHeader" element="tns:AuthenticationHeader" />
+  </wsdl:message>
+  <wsdl:message name="SetContainerSoapIn">
+    <wsdl:part name="parameters" element="tns:SetContainer" />
+  </wsdl:message>
+  <wsdl:message name="SetContainerSoapOut">
+    <wsdl:part name="parameters" element="tns:SetContainerResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetContainerAuthenticationHeader">
+    <wsdl:part name="AuthenticationHeader" element="tns:AuthenticationHeader" />
+  </wsdl:message>
+  <wsdl:message name="SetShipmentSoapIn">
+    <wsdl:part name="parameters" element="tns:SetShipment" />
+  </wsdl:message>
+  <wsdl:message name="SetShipmentSoapOut">
+    <wsdl:part name="parameters" element="tns:SetShipmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetShipmentAuthenticationHeader">
+    <wsdl:part name="AuthenticationHeader" element="tns:AuthenticationHeader" />
+  </wsdl:message>
+  <wsdl:message name="CancelParcelSoapIn">
+    <wsdl:part name="parameters" element="tns:CancelParcel" />
+  </wsdl:message>
+  <wsdl:message name="CancelParcelSoapOut">
+    <wsdl:part name="parameters" element="tns:CancelParcelResponse" />
+  </wsdl:message>
+  <wsdl:message name="CancelParcelAuthenticationHeader">
+    <wsdl:part name="AuthenticationHeader" element="tns:AuthenticationHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetParcelSoapIn">
+    <wsdl:part name="parameters" element="tns:GetParcel" />
+  </wsdl:message>
+  <wsdl:message name="GetParcelSoapOut">
+    <wsdl:part name="parameters" element="tns:GetParcelResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetParcelAuthenticationHeader">
+    <wsdl:part name="AuthenticationHeader" element="tns:AuthenticationHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetDeliveryCalendarSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDeliveryCalendar" />
+  </wsdl:message>
+  <wsdl:message name="GetDeliveryCalendarSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDeliveryCalendarResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDeliveryCalendarAuthenticationHeader">
+    <wsdl:part name="AuthenticationHeader" element="tns:AuthenticationHeader" />
+  </wsdl:message>
+  <wsdl:message name="Set2ndDeliverySoapIn">
+    <wsdl:part name="parameters" element="tns:Set2ndDelivery" />
+  </wsdl:message>
+  <wsdl:message name="Set2ndDeliverySoapOut">
+    <wsdl:part name="parameters" element="tns:Set2ndDeliveryResponse" />
+  </wsdl:message>
+  <wsdl:message name="Set2ndDeliveryAuthenticationHeader">
+    <wsdl:part name="AuthenticationHeader" element="tns:AuthenticationHeader" />
+  </wsdl:message>
+  <wsdl:message name="SetPickupPointDeliverySoapIn">
+    <wsdl:part name="parameters" element="tns:SetPickupPointDelivery" />
+  </wsdl:message>
+  <wsdl:message name="SetPickupPointDeliverySoapOut">
+    <wsdl:part name="parameters" element="tns:SetPickupPointDeliveryResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetPickupPointDeliveryAuthenticationHeader">
+    <wsdl:part name="AuthenticationHeader" element="tns:AuthenticationHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetPickupPointSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPickupPoint" />
+  </wsdl:message>
+  <wsdl:message name="GetPickupPointSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPickupPointResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPickupPointAuthenticationHeader">
+    <wsdl:part name="AuthenticationHeader" element="tns:AuthenticationHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetPickupPointsListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPickupPointsList" />
+  </wsdl:message>
+  <wsdl:message name="GetPickupPointsListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPickupPointsListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPickupPointsListAuthenticationHeader">
+    <wsdl:part name="AuthenticationHeader" element="tns:AuthenticationHeader" />
+  </wsdl:message>
+  <wsdl:message name="UpdateParcelStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateParcelStatus" />
+  </wsdl:message>
+  <wsdl:message name="UpdateParcelStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateParcelStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateParcelStatusAuthenticationHeader">
+    <wsdl:part name="AuthenticationHeader" element="tns:AuthenticationHeader" />
+  </wsdl:message>
+  <wsdl:portType name="WSCPSoap">
+    <wsdl:operation name="TestService">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Ce service permet de faire un premier test de connexion.</wsdl:documentation>
+      <wsdl:input message="tns:TestServiceSoapIn" />
+      <wsdl:output message="tns:TestServiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetParcel">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Permet d'annoncer un nouveau colis à Colis Privé.</wsdl:documentation>
+      <wsdl:input message="tns:SetParcelSoapIn" />
+      <wsdl:output message="tns:SetParcelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetContainer">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Permet d'annoncer un nouveau conteneur de colis à Colis Privé.</wsdl:documentation>
+      <wsdl:input message="tns:SetContainerSoapIn" />
+      <wsdl:output message="tns:SetContainerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetShipment">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Ce service permet de valider la soumission de tous les colis créés par le WS SetParcel en attente dans le SAS.</wsdl:documentation>
+      <wsdl:input message="tns:SetShipmentSoapIn" />
+      <wsdl:output message="tns:SetShipmentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelParcel">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Permet d'annuler l'envoi d'un colis (avant le SetShipment).</wsdl:documentation>
+      <wsdl:input message="tns:CancelParcelSoapIn" />
+      <wsdl:output message="tns:CancelParcelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetParcel">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Permet de récupérer toutes les informations relatives à un colis déjà annoncé chez Colis Privé.</wsdl:documentation>
+      <wsdl:input message="tns:GetParcelSoapIn" />
+      <wsdl:output message="tns:GetParcelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeliveryCalendar">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Fournit la liste des dates possibles pour la planification d'une livraison à domicile ou à un tiers pour un code postal donné.</wsdl:documentation>
+      <wsdl:input message="tns:GetDeliveryCalendarSoapIn" />
+      <wsdl:output message="tns:GetDeliveryCalendarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Set2ndDelivery">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Permet de fournir toutes les informations relatives à la replanification de la livraison d'un colis.</wsdl:documentation>
+      <wsdl:input message="tns:Set2ndDeliverySoapIn" />
+      <wsdl:output message="tns:Set2ndDeliverySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetPickupPointDelivery">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Permet de fournir toutes les informations relatives à la replanification de la livraison d'un colis dans un point relais.</wsdl:documentation>
+      <wsdl:input message="tns:SetPickupPointDeliverySoapIn" />
+      <wsdl:output message="tns:SetPickupPointDeliverySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPickupPoint">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retourne la fiche complète d'un relais dont le code est passé en paramètre.</wsdl:documentation>
+      <wsdl:input message="tns:GetPickupPointSoapIn" />
+      <wsdl:output message="tns:GetPickupPointSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPickupPointsList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retourne les fiches détaillées des relais pouvant être sélectionnés pour la planification d'une distribution en relais d'un colis passé en paramètre.
+        Pour chaque relais, une date prévisionnelle de livraison dans le point relais est indiquée.
+        La date prévisionnelle est calculée à partir de la date et heure de l'appel au WS GetPickupPointsList.</wsdl:documentation>
+      <wsdl:input message="tns:GetPickupPointsListSoapIn" />
+      <wsdl:output message="tns:GetPickupPointsListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateParcelStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Ce service permet de modifier le statut du colis pour certains clients chargeurs.</wsdl:documentation>
+      <wsdl:input message="tns:UpdateParcelStatusSoapIn" />
+      <wsdl:output message="tns:UpdateParcelStatusSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSCPSoap" type="tns:WSCPSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="TestService">
+      <soap:operation soapAction="http://colisprive.com/externe/1.0/TestService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:TestServiceAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetParcel">
+      <soap:operation soapAction="http://colisprive.com/externe/1.0/SetParcel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SetParcelAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetContainer">
+      <soap:operation soapAction="http://colisprive.com/externe/1.0/SetContainer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SetContainerAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetShipment">
+      <soap:operation soapAction="http://colisprive.com/externe/1.0/SetShipment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SetShipmentAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelParcel">
+      <soap:operation soapAction="http://colisprive.com/externe/1.0/CancelParcel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:CancelParcelAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetParcel">
+      <soap:operation soapAction="http://colisprive.com/externe/1.0/GetParcel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetParcelAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeliveryCalendar">
+      <soap:operation soapAction="http://colisprive.com/externe/1.0/GetDeliveryCalendar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetDeliveryCalendarAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Set2ndDelivery">
+      <soap:operation soapAction="http://colisprive.com/externe/1.0/Set2ndDelivery" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Set2ndDeliveryAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetPickupPointDelivery">
+      <soap:operation soapAction="http://colisprive.com/externe/1.0/SetPickupPointDelivery" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SetPickupPointDeliveryAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPickupPoint">
+      <soap:operation soapAction="http://colisprive.com/externe/1.0/GetPickupPoint" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetPickupPointAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPickupPointsList">
+      <soap:operation soapAction="http://colisprive.com/externe/1.0/GetPickupPointsList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetPickupPointsListAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateParcelStatus">
+      <soap:operation soapAction="http://colisprive.com/externe/1.0/UpdateParcelStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:UpdateParcelStatusAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WSCPSoap12" type="tns:WSCPSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="TestService">
+      <soap12:operation soapAction="http://colisprive.com/externe/1.0/TestService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:TestServiceAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetParcel">
+      <soap12:operation soapAction="http://colisprive.com/externe/1.0/SetParcel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SetParcelAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetContainer">
+      <soap12:operation soapAction="http://colisprive.com/externe/1.0/SetContainer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SetContainerAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetShipment">
+      <soap12:operation soapAction="http://colisprive.com/externe/1.0/SetShipment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SetShipmentAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelParcel">
+      <soap12:operation soapAction="http://colisprive.com/externe/1.0/CancelParcel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:CancelParcelAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetParcel">
+      <soap12:operation soapAction="http://colisprive.com/externe/1.0/GetParcel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetParcelAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeliveryCalendar">
+      <soap12:operation soapAction="http://colisprive.com/externe/1.0/GetDeliveryCalendar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetDeliveryCalendarAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Set2ndDelivery">
+      <soap12:operation soapAction="http://colisprive.com/externe/1.0/Set2ndDelivery" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Set2ndDeliveryAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetPickupPointDelivery">
+      <soap12:operation soapAction="http://colisprive.com/externe/1.0/SetPickupPointDelivery" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SetPickupPointDeliveryAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPickupPoint">
+      <soap12:operation soapAction="http://colisprive.com/externe/1.0/GetPickupPoint" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetPickupPointAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPickupPointsList">
+      <soap12:operation soapAction="http://colisprive.com/externe/1.0/GetPickupPointsList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetPickupPointsListAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateParcelStatus">
+      <soap12:operation soapAction="http://colisprive.com/externe/1.0/UpdateParcelStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:UpdateParcelStatusAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSCP">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Services d'accès à Colis Privé</wsdl:documentation>
+    <wsdl:port name="WSCPSoap" binding="tns:WSCPSoap">
+      <soap:address location="https://www.test.colisprive.com/Externe/WSCP.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WSCPSoap12" binding="tns:WSCPSoap12">
+      <soap12:address location="https://www.test.colisprive.com/Externe/WSCP.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

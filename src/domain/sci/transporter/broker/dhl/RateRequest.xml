@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+               xmlns:s1="http://scxgxtt.phx-dc.dhl.com/euExpressRateBook/RateMsgRequest"
+>
+  <soap:Header>
+    <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+      <wsse:UsernameToken>
+        <wsse:Username>usaFR</wsse:Username>
+        <wsse:Password
+          Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">
+          R!7bW@5kV#2p
+        </wsse:Password>
+      </wsse:UsernameToken>
+    </wsse:Security>
+  </soap:Header>
+  <soap:Body>
+    <s1:RateRequest xmlns:s1="http://scxgxtt.phx-dc.dhl.com/euExpressRateBook/RateMsgRequest">
+      <RequestedShipment>
+        <DropOffType>REQUEST_COURIER</DropOffType>
+        <Ship>
+          <Shipper>
+            <StreetLines>1-16-24, Minami-gyotoku</StreetLines>
+            <City>Ichikawa-shi, Chiba</City>
+            <PostalCode>272-0138</PostalCode>
+            <CountryCode>JP</CountryCode>
+          </Shipper>
+          <Recipient>
+            <StreetLines>63 RENMIN LU, QINGDAO SHI</StreetLines>
+            <City>QINGDAO SHI</City>
+            <PostalCode>266033</PostalCode>
+            <CountryCode>CN</CountryCode>
+          </Recipient>
+        </Ship>
+        <Packages>
+          <RequestedPackages>
+            <number>1</number>
+            <Weight>
+              <Value>2</Value>
+            </Weight>
+            <Dimensions>
+              <Length>13</Length>
+              <Width>12</Width>
+              <Height>9</Height>
+            </Dimensions>
+          </RequestedPackages>
+        </Packages>
+      </RequestedShipment>
+      <ShipTimestamp>2021-09-24T13:22:23GMT+08:00</ShipTimestamp>
+      <UnitOfMeasurement>SU</UnitOfMeasurement>
+      <Content>NON_DOCUMENTS</Content>
+      <DeclaredValue>200</DeclaredValue>
+      <DeclaredValueCurrecyCode>USD</DeclaredValueCurrecyCode>
+      <PaymentInfo>DAP</PaymentInfo>
+      <Account>220424192</Account>
+    </s1:RateRequest>
+  </soap:Body>
+</soap:Envelope>

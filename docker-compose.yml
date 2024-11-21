@@ -1,0 +1,33 @@
+version: "3"
+services:
+  uat-db:
+    image: postgres
+    restart: always
+    ports:
+      - "15432:5432"
+    environment:
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./src/test/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  uat-redis:
+      image: redis
+      restart: always
+      ports:
+        - "16379:6379"
+
+  test-db:
+    image: postgres
+    restart: always
+    ports:
+      - "25432:5432"
+    environment:
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./src/test/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  test-redis:
+    image: redis
+    restart: always
+    ports:
+      - "26379:6379"

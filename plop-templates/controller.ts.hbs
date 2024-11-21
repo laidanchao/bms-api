@@ -1,0 +1,25 @@
+import { Controller } from '@nestjs/common';
+import { {{> service}} } from './{{> entity}}.service';
+import { Crud } from '@nestjsx/crud';
+import { {{> TEntity}} } from './entities/{{> entity}}.entity';
+import { ApiTags, ApiBearerAuth } from '@nestjs/swagger';
+import { CrudAcl } from '@/decorators/crud-acl.decorator';
+
+
+@Crud({
+  model: {
+    type: {{> TEntity}},
+  },
+  query:{
+    sort:[{field:'id',order:'DESC'}]
+  },
+})
+@CrudAcl(false)
+@Controller('{{> entity}}')
+@ApiTags('{{> entity}}')
+@ApiBearerAuth()
+export class {{> controller}} {
+
+  constructor(public service: {{> service}}){
+  }
+}

@@ -1,0 +1,18 @@
+export const transporterProducts = [
+  { productCode: 'DOM', ftlRoute: 'COLISSIMO_FR', transporterId: 'COLISSIMO' },
+  { productCode: 'COL', ftlRoute: 'COLISSIMO_FR_SIG', transporterId: 'COLISSIMO' },
+  { productCode: 'DOM', ftlRoute: 'COLISSIMO_EU', transporterId: 'COLISSIMO' },
+  { productCode: 'DOS', ftlRoute: 'COLISSIMO_EU_SIG', transporterId: 'COLISSIMO' },
+  { productCode: 'COM', ftlRoute: 'COLISSIMO_OM', transporterId: 'COLISSIMO' },
+  { productCode: 'CDS', ftlRoute: 'COLISSIMO_OM_SIG', transporterId: 'COLISSIMO' },
+  { productCode: 'COLI', ftlRoute: 'COLISSIMO_IN', transporterId: 'COLISSIMO' },
+  { productCode: 'ACCI', ftlRoute: 'COLISSIMO_IN_E', transporterId: 'COLISSIMO' },
+  { productCode: '11', ftlRoute: 'UPS_STANDARD', transporterId: 'UPS' },
+  { productCode: '65', ftlRoute: 'UPS_EXPRESS', transporterId: 'UPS' },
+  { productCode: '44', ftlRoute: 'CHRONOPOST_STANDARD', transporterId: 'CHRONOPOST' },
+  { productCode: '1S', ftlRoute: 'CHRONOPOST_13', transporterId: 'CHRONOPOST' },
+  { productCode: '17', ftlRoute: 'CHRONOPOST_EXPRESS', transporterId: 'CHRONOPOST' },
+  { productCode: 'GLS_EU_TRACK', ftlRoute: 'GLS_EU_TRACK', transporterId: 'GLS' },
+  { productCode: 'DPD_STANDARD', ftlRoute: 'DPD_STANDARD', transporterId: 'DPD' },
+  { productCode: 'ASENDIA_STANDARD', ftlRoute: 'ASENDIA_STANDARD', transporterId: 'ASENDIA' },
+];

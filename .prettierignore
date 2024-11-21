@@ -1,0 +1,2 @@
+src/seed/data/*.ts
+src/migrations/*.ts

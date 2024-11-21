@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+               xmlns:tns="http://scxgxtt.phx-dc.dhl.com/euExpressRateBook/ShipmentMsgRequest">
+  <soap:Header>
+    <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+      <wsse:UsernameToken>
+        <wsse:Username>esendeoFR</wsse:Username>
+        <wsse:Password
+          Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">
+          N$8nL!3tG#6b 987
+        </wsse:Password>
+      </wsse:UsernameToken>
+    </wsse:Security>
+  </soap:Header>
+  <soap:Body>
+    <tns:ShipmentRequest>
+      <RequestedShipment>
+        <ShipmentInfo>
+          <DropOffType>REGULAR_PICKUP</DropOffType>
+          <ServiceType>P</ServiceType>
+          <Billing>
+            <ShipperAccountNumber>220370316</ShipperAccountNumber>
+            <ShippingPaymentType>S</ShippingPaymentType>
+            <BillingAccountNumber>220370316</BillingAccountNumber>
+          </Billing>
+          <Currency>EUR</Currency>
+          <UnitOfMeasurement>SI</UnitOfMeasurement>
+          <LabelType>PDF</LabelType>
+          <LabelTemplate>ECOM26_64_002</LabelTemplate>
+          <PaperlessTradeEnabled>true</PaperlessTradeEnabled>
+          <LabelOptions>
+            <DHLCustomsInvoiceType>PROFORMA_INVOICE</DHLCustomsInvoiceType>
+            <RequestDHLCustomsInvoice>Y</RequestDHLCustomsInvoice>
+          </LabelOptions>
+          <SpecialServices>
+            <Service>
+              <ServiceType>II</ServiceType>
+              <ServiceValue>24</ServiceValue>
+              <CurrencyCode>EUR</CurrencyCode>
+            </Service>
+            <Service>
+              <ServiceType>WY</ServiceType>
+            </Service>
+          </SpecialServices>
+        </ShipmentInfo>
+        <ShipTimestamp>2021-09-27T18:15:00GMT+08:00</ShipTimestamp>
+        <PaymentInfo>DAP</PaymentInfo>
+        <InternationalDetail>
+          <Commodities>
+            <Description>Business Document</Description>
+            <CustomsValue>25.06</CustomsValue>
+          </Commodities>
+          <Content>NON_DOCUMENTS</Content>
+          <ExportDeclaration>
+            <InvoiceDate>2021-09-26</InvoiceDate>
+            <InvoiceNumber>INV-WZ110</InvoiceNumber>
+            <ExportLineItems>
+              <ExportLineItem>
+                <CommodityCode>366099</CommodityCode>
+                <ItemNumber>1</ItemNumber>
+                <Quantity>4</Quantity>
+                <QuantityUnitOfMeasurement>PCS</QuantityUnitOfMeasurement>
+                <ItemDescription>Textile</ItemDescription>
+                <UnitPrice>3.5</UnitPrice>
+                <NetWeight>4</NetWeight>
+                <GrossWeight>4</GrossWeight>
+                <ManufacturingCountryCode>FR</ManufacturingCountryCode>
+              </ExportLineItem>
+              <ExportLineItem>
+                <CommodityCode>366099</CommodityCode>
+                <ItemNumber>2</ItemNumber>
+                <Quantity>2</Quantity>
+                <QuantityUnitOfMeasurement>PCS</QuantityUnitOfMeasurement>
+                <ItemDescription>Textile</ItemDescription>
+                <UnitPrice>1.889</UnitPrice>
+                <NetWeight>2</NetWeight>
+                <GrossWeight>2</GrossWeight>
+                <ManufacturingCountryCode>FR</ManufacturingCountryCode>
+              </ExportLineItem>
+              <ExportLineItem>
+                <CommodityCode>366099</CommodityCode>
+                <ItemNumber>3</ItemNumber>
+                <Quantity>1</Quantity>
+                <QuantityUnitOfMeasurement>PCS</QuantityUnitOfMeasurement>
+                <ItemDescription>Textile</ItemDescription>
+                <UnitPrice>3.5</UnitPrice>
+                <NetWeight>1</NetWeight>
+                <GrossWeight>1</GrossWeight>
+                <ManufacturingCountryCode>FR</ManufacturingCountryCode>
+              </ExportLineItem>
+              <ExportLineItem>
+                <CommodityCode>366099</CommodityCode>
+                <ItemNumber>4</ItemNumber>
+                <Quantity>2</Quantity>
+                <QuantityUnitOfMeasurement>PCS</QuantityUnitOfMeasurement>
+                <ItemDescription>Textile</ItemDescription>
+                <UnitPrice>1.889</UnitPrice>
+                <NetWeight>2</NetWeight>
+                <GrossWeight>2</GrossWeight>
+                <ManufacturingCountryCode>FR</ManufacturingCountryCode>
+              </ExportLineItem>
+            </ExportLineItems>
+          </ExportDeclaration>
+        </InternationalDetail>
+        <Ship>
+          <Shipper>
+            <Contact>
+              <PersonName>xie</PersonName>
+              <CompanyName>LYONEXPRESS</CompanyName>
+              <PhoneNumber>0981611051</PhoneNumber>
+            </Contact>
+            <Address>
+              <StreetLines>19 RUE ELIE ROCHETTE1</StreetLines>
+              <StreetLines2>19 RUE ELIE ROCHETTE2</StreetLines2>
+              <StreetLines3>19 RUE ELIE ROCHETTE3</StreetLines3>
+              <City>LYON</City>
+              <PostalCode>69007</PostalCode>
+              <CountryCode>FR</CountryCode>
+            </Address>
+            <RegistrationNumbers>
+              <RegistrationNumber>
+                <Number>EOR987654321</Number>
+                <NumberTypeCode>EOR</NumberTypeCode>
+                <NumberIssuerCountryCode>FR</NumberIssuerCountryCode>
+              </RegistrationNumber>
+              <RegistrationNumber>
+                <Number>VAT987654321</Number>
+                <NumberTypeCode>VAT</NumberTypeCode>
+                <NumberIssuerCountryCode>FR</NumberIssuerCountryCode>
+              </RegistrationNumber>
+            </RegistrationNumbers>
+          </Shipper>
+          <Recipient>
+            <Contact>
+              <PersonName>receiver lastName Old Town Hotel</PersonName>
+              <CompanyName>Old Town Hotel</CompanyName>
+              <PhoneNumber>+40356880300</PhoneNumber>
+            </Contact>
+            <Address>
+              <StreetLines>Strada Emanoil Ungureanu nr.1</StreetLines>
+              <StreetLines2>Strada Emanoil Ungureanu nr.2</StreetLines2>
+              <StreetLines3>Strada Emanoil Ungureanu nr.3</StreetLines3>
+              <City>hangzhou</City>
+              <PostalCode>310000</PostalCode>
+              <CountryCode>CN</CountryCode>
+            </Address>
+          </Recipient>
+        </Ship>
+        <Packages>
+          <RequestedPackages number="1">
+            <Weight>6</Weight>
+            <Dimensions>
+              <Length>1.0</Length>
+              <Width>1.0</Width>
+              <Height>1.0</Height>
+            </Dimensions>
+            <CustomerReferences>8078771</CustomerReferences>
+          </RequestedPackages>
+          <RequestedPackages number="2">
+            <Weight>3</Weight>
+            <Dimensions>
+              <Length>1.0</Length>
+              <Width>1.0</Width>
+              <Height>1.0</Height>
+            </Dimensions>
+            <CustomerReferences>8078772</CustomerReferences>
+          </RequestedPackages>
+        </Packages>
+      </RequestedShipment>
+    </tns:ShipmentRequest>
+  </soap:Body>
+</soap:Envelope>
+
+
+<!--response-->
+<env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/">
+<env:Header></env:Header>
+<env:Body>
+  <env:Fault>
+    <faultcode>env:Server</faultcode>
+    <faultstring></faultstring>
+    <detail fault:type="Unauthorized" xmlns:fault="http://www.dhl.com/soapfaults"></detail>
+  </env:Fault>
+</env:Body>
+</env:Envelope>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions 
+	xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" 
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+	xmlns:s="http://www.w3.org/2001/XMLSchema" 
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+	xmlns:tns="ServiciosWebLocalizacionMI/" 
+	xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" 
+	targetNamespace="ServiciosWebLocalizacionMI/" 
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="ServiciosWebLocalizacionMI/">
+      <s:element name="ConsultaLocalizacionEnviosFases">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="XMLin" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaLocalizacionEnviosFasesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaLocalizacionEnviosFasesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaLocalizacionEnviosFasesMasivo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="XMLin" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaLocalizacionEnviosFasesMasivoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaLocalizacionEnviosFasesMasivoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ConsultaLocalizacionEnviosFasesSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaLocalizacionEnviosFases" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaLocalizacionEnviosFasesSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaLocalizacionEnviosFasesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaLocalizacionEnviosFasesMasivoSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaLocalizacionEnviosFasesMasivo" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaLocalizacionEnviosFasesMasivoSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaLocalizacionEnviosFasesMasivoResponse" />
+  </wsdl:message>
+
+  <wsdl:portType name="LocalizacionMISoap">
+    <wsdl:operation name="ConsultaLocalizacionEnviosFases">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Consulta de la localización de envíos con histórico de agrupaciones de eventos con parámetro de entrada en formato XML</documentation>
+      <wsdl:input message="tns:ConsultaLocalizacionEnviosFasesSoapIn" />
+      <wsdl:output message="tns:ConsultaLocalizacionEnviosFasesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaLocalizacionEnviosFasesMasivo">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Consulta de la localización de énvios con histórico de agrupaciones de eventos con parámetro de entrada en formamto XML</documentation>
+      <wsdl:input message="tns:ConsultaLocalizacionEnviosFasesMasivoSoapIn" />
+      <wsdl:output message="tns:ConsultaLocalizacionEnviosFasesMasivoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  
+  <wsdl:binding name="LocalizacionMISoap" type="tns:LocalizacionMISoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <wsdl:operation name="ConsultaLocalizacionEnviosFases">
+      <soap:operation soapAction="ServiciosWebLocalizacionMI/ConsultaLocalizacionEnviosFases" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaLocalizacionEnviosFasesMasivo">
+      <soap:operation soapAction="ServiciosWebLocalizacionMI/ConsultaLocalizacionEnviosFasesMasivo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  
+  <wsdl:service name="LocalizacionMI">
+    <wsdl:port name="LocalizacionMISoap" binding="tns:LocalizacionMISoap">
+      <soap:address location="https://online.correos.es/ServiciosWebLocalizacionMI/LocalizacionMI.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

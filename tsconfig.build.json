@@ -1,0 +1,5 @@
+{
+  "extends": "./tsconfig.json",
+  "include": ["src/**/*", "node_modules/@nestjs/**/*"],
+  "exclude": ["node_modules", "dist", "test", "api", "plop-templates", "**/*.e2e-spec.ts", "**/*.test.ts"]
+}

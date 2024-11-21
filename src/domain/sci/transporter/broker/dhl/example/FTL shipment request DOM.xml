@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<soapenv:Header>
+<wsse:Security soapenv:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+<wsse:UsernameToken wsu:Id="UsernameToken-5" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+<wsse:Username>usaFR</wsse:Username>
+<wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">R!7bW@5kV#2p</wsse:Password>
+</wsse:UsernameToken>
+</wsse:Security>
+</soapenv:Header>
+   <soapenv:Body>
+      <ShipmentRequest xmlns="http://scxgxtt.phx-dc.dhl.com/euExpressRateBook/ShipmentMsgRequest">
+         <ClientDetail xmlns=""/>
+         <RequestedShipment xmlns="">
+            <ShipmentInfo>
+               <DropOffType>REGULAR_PICKUP</DropOffType>
+               <ServiceType>N</ServiceType>
+               <Billing>
+                  <ShipperAccountNumber>220273846</ShipperAccountNumber>
+                  <ShippingPaymentType>S</ShippingPaymentType>
+                  <BillingAccountNumber>220273846</BillingAccountNumber>
+               </Billing>
+               <Currency>EUR</Currency>
+               <UnitOfMeasurement>SI</UnitOfMeasurement>
+               <PackagesCount>1</PackagesCount>
+               <LabelType>PDF</LabelType>
+               <LabelTemplate>ECOM26_64_002</LabelTemplate>
+            </ShipmentInfo>
+            <ShipTimestamp>${=(new Date().format("yyy-MM-dd"))}T20:05:00GMT+01:00</ShipTimestamp>
+            <PaymentInfo>DAP</PaymentInfo>
+            <InternationalDetail>
+               <Commodities>
+                  <NumberOfPieces>1</NumberOfPieces>
+                  <Description>PRODUCT</Description>
+               </Commodities>
+               <Content>DOCUMENTS</Content>
+            </InternationalDetail>
+            <Ship>
+             <Shipper>
+                 <Contact>
+                     <PersonName>CONTACT</PersonName>
+                     <CompanyName>Company Name</CompanyName>
+                     <PhoneNumber>0559999999</PhoneNumber>
+                 </Contact>
+                 <Address>
+                     <StreetLines>addr1</StreetLines>
+                     <StreetLines2>addr2</StreetLines2>
+                     <StreetLines3>addr3</StreetLines3>
+                     <City>NANTES</City>
+                     <PostalCode>44000</PostalCode>
+                     <CountryCode>FR</CountryCode>
+                 </Address>
+             </Shipper>
+               <Recipient>
+                  <Contact>
+                     <PersonName>Nom destinataire</PersonName>
+                     <CompanyName>RAison sociale Destinataire</CompanyName>
+                     <PhoneNumber>+33(0)99999999</PhoneNumber>
+                  </Contact>
+                  <Address>
+                     <StreetLines>rue1 destinataire</StreetLines>
+                     <StreetLines2>rue2 destinataire</StreetLines2>
+                     <StreetLines3>rue3 destinataire</StreetLines3>
+                     <City>MARSEILLE</City>
+                     <PostalCode>13002</PostalCode>
+                     <CountryCode>FR</CountryCode>
+                  </Address>
+               </Recipient>
+            </Ship>
+            <Packages>
+               <RequestedPackages number="1">
+                  <Weight>1</Weight>
+                  <Dimensions>
+                     <Length>1.0</Length>
+                     <Width>1.0</Width>
+                     <Height>1.0</Height>
+                  </Dimensions>
+                  <CustomerReferences>customer reference</CustomerReferences>
+               </RequestedPackages>
+            </Packages>
+         </RequestedShipment>
+      </ShipmentRequest>
+   </soapenv:Body>
+</soapenv:Envelope>

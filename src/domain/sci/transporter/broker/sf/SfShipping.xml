@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Request service="ReConfrimWeightOrder" lang="zh_CN">
+  <Head>OSMS_897</Head>
+  <Body>
+    <Order
+      reference_no1="FTL00764503FR"
+      express_type="602"
+      pay_method="1"
+      currency="CNY"
+      j_company="wangbin"
+      j_contact="wangbin"
+      j_tel="0766189528"
+      j_address="12 Avenue du Valquiou,"
+      j_country="FR"
+      j_province="Paris"
+      j_city="Tremblay-en-France "
+      j_post_code="93290"
+      d_company=""
+      d_contact="周洁"
+      order_cert_type="ID"
+      order_cert_no="45232719800000000"
+      d_address="灌阳镇宿舍"
+      d_tel="13550000000"
+      d_country="CN"
+      d_province="广西壮族自治区"
+      d_city="桂林市"
+      d_county="灌阳县"
+      d_post_code="541600"
+      custid="0655001934"
+      tax_pay_type="1"
+      express_reason="2"
+      is_change_order="1"
+      printSize="1">
+      <Cargo
+        name="法国 GALLIA CALISMA RELAIS 1 佳丽雅1段近母乳婴儿奶粉 新包装 900g"
+        count="6"
+        amount="85.00"
+        currency="CNY"
+        source_area="FR"
+        brand="Gallia佳丽雅"
+        unit="罐"
+        weight="1.12"
+        specifications="一段"/>
+    </Order>
+  </Body>
+</Request>
